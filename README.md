@@ -3,6 +3,10 @@ A part of web ui of cobbler.
 
 cobbler的ui界面的二次开发。
 
+
+![](http://ww2.sinaimg.cn/large/006tNc79ly1g3h0wkiczqj313y0iraa6.jpg)
+
+
 ## 说明
 
 ### 后端
