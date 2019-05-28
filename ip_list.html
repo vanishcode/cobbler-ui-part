@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zh-CN">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <title>操作系统自动化安装管理系统</title>
+    <meta
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+      name="viewport"
+    />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link
+      href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/plugins/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/plugins/font-awesome/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/css/animate.min.css" rel="stylesheet" />
+    <link href="assets/css/style.min.css" rel="stylesheet" />
+    <link href="assets/css/style-responsive.min.css" rel="stylesheet" />
+    <link href="assets/css/theme/default.css" rel="stylesheet" id="theme" />
+    <!-- ================== END BASE CSS STYLE ================== -->
+
+    <!-- ================== BEGIN BASE JS ================== -->
+    <link
+      href="assets/plugins/DataTables/css/data-table.css"
+      rel="stylesheet"
+    />
+    <script src="assets/plugins/pace/pace.min.js"></script>
+    <!-- ================== END BASE JS ================== -->
+  </head>
+  <body>
+    <!-- begin #page-loader -->
+    <div id="page-loader" class="fade in"><span class="spinner"></span></div>
+    <!-- end #page-loader -->
+
+    <!-- begin #page-container -->
+    <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+      <!-- begin #header -->
+      <div id="header" class="header navbar navbar-default navbar-fixed-top">
+        <!-- begin container-fluid -->
+        <div class="container-fluid">
+          <!-- begin mobile sidebar expand / collapse button -->
+          <div class="navbar-header">
+            <a href="index.html" class="navbar-brand"
+              ><span class="navbar-logo"></span> OSAIMS
+            </a>
+            <button
+              type="button"
+              class="navbar-toggle"
+              data-click="sidebar-toggled"
+            >
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <!-- end mobile sidebar expand / collapse button -->
+
+          <!-- begin header navigation right -->
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown navbar-user">
+              <a
+                href="javascript:;"
+                class="dropdown-toggle"
+                data-toggle="dropdown"
+              >
+                <img
+                  src="http://ww1.sinaimg.cn/large/006tNc79ly1g3chy90b1vj303a03c0sp.jpg"
+                  alt="avatar"
+                />
+                <span class="hidden-xs">陶俊存</span> <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu animated fadeInLeft">
+                <li class="arrow"></li>
+                <li><a href="javascript:;">个人中心</a></li>
+                <li class="divider"></li>
+                <li><a href="javascript:;">系统设置</a></li>
+                <li class="divider"></li>
+                <li><a href="javascript:;">退出登录</a></li>
+              </ul>
+            </li>
+          </ul>
+          <!-- end header navigation right -->
+        </div>
+        <!-- end container-fluid -->
+      </div>
+      <!-- end #header -->
+
+      <!-- begin #sidebar -->
+      <div id="sidebar" class="sidebar">
+        <!-- begin sidebar scrollbar -->
+        <div data-scrollbar="true" data-height="100%">
+          <!-- begin sidebar nav -->
+          <ul class="nav">
+            <li class="has-sub">
+              <a href="javascript:;">
+                <b class="caret pull-right"></b>
+                <i class="fa fa-laptop"></i>
+                <span>Dashboard</span>
+              </a>
+              <ul class="sub-menu">
+                <li><a href="index.html">Dashboard v1</a></li>
+                <li><a href="index_v2.html">Dashboard v2</a></li>
+              </ul>
+            </li>
+            <li class="has-sub active">
+              <a href="javascript:;">
+                <b class="caret pull-right"></b>
+                <i class="fa fa-cogs"></i>
+                <span>页面</span>
+              </a>
+              <ul class="sub-menu">
+                <li class="active"><a href="page_blank.html">空白页</a></li>
+              </ul>
+            </li>
+
+            <!-- begin sidebar minify button -->
+            <li>
+              <a
+                href="javascript:;"
+                class="sidebar-minify-btn"
+                data-click="sidebar-minify"
+                ><i class="fa fa-angle-double-left"></i
+              ></a>
+            </li>
+            <!-- end sidebar minify button -->
+          </ul>
+          <!-- end sidebar nav -->
+        </div>
+        <!-- end sidebar scrollbar -->
+      </div>
+      <div class="sidebar-bg"></div>
+      <!-- end #sidebar -->
+
+      <!-- begin #content -->
+      <div id="content" class="content">
+        <!-- begin breadcrumb -->
+        <ol class="breadcrumb pull-right">
+          <li><a href="javascript:;">Home</a></li>
+          <li><a href="javascript:;">ACtions</a></li>
+          <li class="active">IP list</li>
+        </ol>
+        <!-- end breadcrumb -->
+        <!-- begin page-header -->
+        <h1 class="page-header">IP <small>在线</small></h1>
+        <!-- end page-header -->
+
+        <div class="panel panel-inverse">
+          <div class="panel-heading">
+            <div class="panel-heading-btn">
+              <a
+                href="javascript:;"
+                class="btn btn-xs btn-icon btn-circle btn-default"
+                data-click="panel-expand"
+                ><i class="fa fa-expand"></i
+              ></a>
+              <a
+                href="javascript:;"
+                class="btn btn-xs btn-icon btn-circle btn-warning"
+                data-click="panel-collapse"
+                ><i class="fa fa-minus"></i
+              ></a>
+              <a
+                href="javascript:;"
+                class="btn btn-xs btn-icon btn-circle btn-danger"
+                data-click="panel-remove"
+                ><i class="fa fa-times"></i
+              ></a>
+            </div>
+            <h4 class="panel-title">输入配置信息</h4>
+          </div>
+          <!-- panel body -->
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table
+                id="data-table"
+                class="table table-striped table-bordered"
+              ></table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end #content -->
+
+      <!-- begin scroll to top btn -->
+      <a
+        href="javascript:;"
+        class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade"
+        data-click="scroll-top"
+        ><i class="fa fa-angle-up"></i
+      ></a>
+      <!-- end scroll to top btn -->
+    </div>
+    <!-- end page container -->
+
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+    <script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+    <script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="assets/crossbrowserjs/html5shiv.js"></script>
+      <script src="assets/crossbrowserjs/respond.min.js"></script>
+      <script src="assets/crossbrowserjs/excanvas.min.js"></script>
+    <![endif]-->
+    <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+    <!-- ================== END BASE JS ================== -->
+
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <script src="assets/plugins/DataTables/js/jquery.dataTables.js"></script>
+    <!-- <script src="assets/js/table-manage-default.demo.min.js"></script> -->
+    <script src="assets/js/apps.min.js"></script>
+    <!-- ================== END PAGE LEVEL JS ================== -->
+
+    <script>
+      $(document).ready(function() {
+        App.init();
+      });
+    </script>
+    <script>
+      $(function() {
+        var table = $("#data-table").DataTable({
+          ajax: {
+            url: "http://10.241.53.227:22222/ip_list",
+            dataSrc: "",
+            type: "get",
+            timeout: 20000,
+            error: function() {
+              alert("服务器未正常响应，请重试");
+            }
+          },
+          // bAutoWidth: false,
+          // aoColumns: [{ sWidth: "20%" }, { sWidth: "60%" }, { sWidth: "20%" }],
+          columns: [
+            {
+              data: "distro",
+              title: "分发版",
+              defaultContent: ""
+            },
+            {
+              data: "ip",
+              title: "ip地址",
+              defaultContent: ""
+            },
+            {
+              data: "status",
+              title: "状态",
+              defaultContent: ""
+            }
+          ],
+          language: {
+            sProcessing: "处理中...",
+            sLengthMenu: "显示 _MENU_ 项结果",
+            sZeroRecords: "没有匹配结果",
+            sInfo: "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+            sInfoEmpty: "显示第 0 至 0 项结果，共 0 项",
+            sInfoFiltered: "(由 _MAX_ 项结果过滤)",
+            sInfoPostFix: "",
+            sSearch: "搜索:",
+            sUrl: "",
+            sEmptyTable: "表中数据为空",
+            sLoadingRecords: "载入中...",
+            sInfoThousands: ",",
+            oPaginate: {
+              sFirst: "首页",
+              sPrevious: "上页",
+              sNext: "下页",
+              sLast: "末页"
+            },
+            oAria: {
+              sSortAscending: ": 以升序排列此列",
+              sSortDescending: ": 以降序排列此列"
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

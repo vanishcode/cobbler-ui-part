@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zh-CN">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <title>操作系统自动化安装管理系统</title>
+    <meta
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+      name="viewport"
+    />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link
+      href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/plugins/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/plugins/font-awesome/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/css/animate.min.css" rel="stylesheet" />
+    <link href="assets/css/style.min.css" rel="stylesheet" />
+    <link href="assets/css/style-responsive.min.css" rel="stylesheet" />
+    <link href="assets/css/theme/default.css" rel="stylesheet" id="theme" />
+    <!-- ================== END BASE CSS STYLE ================== -->
+  </head>
+  <body>
+    <!-- begin #page-loader -->
+    <div id="page-loader" class="fade in"><span class="spinner"></span></div>
+    <!-- end #page-loader -->
+
+    <div class="login-cover">
+      <div class="login-cover-image">
+        <img
+          src="assets/img/login-bg/bg-4.jpg"
+          data-id="login-cover-image"
+          alt=""
+        />
+      </div>
+      <div class="login-cover-bg"></div>
+    </div>
+    <!-- begin #page-container -->
+    <div id="page-container" class="fade">
+      <!-- begin login -->
+      <div class="login login-v2" data-pageload-addclass="animated flipInX">
+        <!-- begin brand -->
+        <div class="login-header">
+          <div class="brand">
+            <span class="logo"></span> 请先登录
+            <small>操作系统自动化安装管理系统</small>
+          </div>
+          <div class="icon">
+            <i class="fa fa-sign-in"></i>
+          </div>
+        </div>
+        <!-- end brand -->
+        <div class="login-content">
+          <div class="margin-bottom-0">
+            <div class="form-group m-b-20">
+              <input
+                type="text"
+                class="form-control input-lg"
+                placeholder="用户名"
+                id="username"
+              />
+            </div>
+            <div class="form-group m-b-20">
+              <input
+                type="password"
+                class="form-control input-lg"
+                placeholder="密码"
+                id="password"
+              />
+            </div>
+            <!-- <div class="checkbox m-b-20">
+              <label> <input type="checkbox" /> 记住我 </label>
+            </div> -->
+            <div class="login-buttons">
+              <button id="login" class="btn btn-success btn-block btn-lg">
+                登录
+              </button>
+            </div>
+            <div class="m-t-20"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end page container -->
+
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+    <script src="assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+    <script src="assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="assets/crossbrowserjs/html5shiv.js"></script>
+      <script src="assets/crossbrowserjs/respond.min.js"></script>
+      <script src="assets/crossbrowserjs/excanvas.min.js"></script>
+    <![endif]-->
+    <!-- <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script> -->
+    <script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+    <!-- ================== END BASE JS ================== -->
+
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <!-- <script src="assets/js/login-v2.demo.min.js"></script> -->
+
+    <script src="assets/js/apps.min.js"></script>
+    <!-- ================== END PAGE LEVEL JS ================== -->
+
+    <script>
+      $(document).ready(function() {
+        App.init();
+      });
+    </script>
+    <script>
+      $("#login").on("click", function() {
+        username = $("#username").val();
+        password = $("#password").val();
+        if (username == "" || password == "") {
+          alert("用户名或密码不能为空！");
+          return;
+        }
+        $.ajax({
+          type: "POST",
+          url: "http://10.241.53.227:22222/login",
+          data: {
+            username,
+            password
+          },
+          dataType: "json",
+          success: function(response) {
+            console.log(response);
+            if (response.code == 0) {
+              $.cookie("username", username);
+              // $.cookie('token',response)
+              location.href = "/distros.html";
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
